@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get("/home", function() {
+Route::get("/home", function () {
     return "home-page";
 });
+
+Route::get("/grades/{slug}", 'App\Http\Controllers\GradeController@index');
