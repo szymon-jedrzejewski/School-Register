@@ -2,17 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>School register</title>
 </head>
 <body>
 <div class="container">
-    <table class="table table-striped table-hover table-reflow">
+    <table class="table">
         <thead>
         <tr>
-            <th ><strong> Grade </strong></th>
-            <th ><strong> Subject </strong></th>
-            <th ><strong> Description </strong></th>
-            <th ><strong> Teacher </strong></th>
+            <th scope="col">Grade</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Description</th>
+            <th scope="col">Teacher</th>
         </tr>
         </thead>
         <tbody>
