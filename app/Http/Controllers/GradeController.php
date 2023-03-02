@@ -17,13 +17,13 @@ class GradeController extends Controller
         return view('grades', compact('grades'));
     }
 
+    public function add()
+    {
+        return view('add-grade');
+    }
+
     public function save(Request $request)
     {
-        $grade = new Grade;
-        $grade->grade = $request->grade;
-        $grade->description = $request->description;
-        $grade->subject = $request->subject;
-        $grade->teacher = $request->teacher;
-        $grade->student = $request->student;
+        dd($request);
     }
 }

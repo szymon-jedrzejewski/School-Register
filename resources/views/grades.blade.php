@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>School register</title>
-</head>
-<body>
-<div class="container">
+@extends('layouts.master')
+@section('content')
     <table class="table">
         <thead>
         <tr>
@@ -27,6 +20,4 @@
         @endforeach
         </tbody>
     </table>
-</div>
-</body>
-</html>
+@endsection

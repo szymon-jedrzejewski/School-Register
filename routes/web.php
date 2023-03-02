@@ -17,8 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get("/home", function () {
-    return "home-page";
-});
-
-Route::get("/grades/{slug}", 'App\Http\Controllers\GradeController@index');
+Route::get("/grades/list/{slug}", 'App\Http\Controllers\GradeController@index');
+Route::get("/grades/add", 'App\Http\Controllers\GradeController@add');
+Route::post("/grades", 'App\Http\Controllers\GradeController@save');
