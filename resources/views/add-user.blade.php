@@ -21,7 +21,7 @@
                         <label for="password">Password</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <select name="roles" id="roles" multiple>
+                        <select class="dataTable-selector" name="roles" id="roles">
                             <option value="admin">Admin</option>
                             <option value="teacher">Teacher</option>
                             <option value="student">Student</option>

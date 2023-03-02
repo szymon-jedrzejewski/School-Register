@@ -23,7 +23,26 @@
                         <label for="description">Description</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input placeholder="Student" type="text" class="form-control" name="student" id="student">
+                        <select class="dataTable-selector" name="subjects" id="subjects">
+                            <option value="math">Math</option>
+                            <option value="english">English</option>
+                            <option value="it">IT</option>
+                            <option value="pe">PE</option>
+                            <option value="history">History</option>
+                            <option value="polish">Polish</option>
+                            <option value="french">French</option>
+                            <option value="spanish">Spanish</option>
+                            <option value="chemistry">Chemistry</option>
+                            <option value="Biology">Biology</option>
+                        </select>
+                        <label for="subjects">Choose a subject:</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <select class="dataTable-selector">
+                            @foreach($students as $student)
+                                <option value="{{$student->name}}" id="{{$student->id}}">{{$student->name}}</option>
+                            @endforeach
+                        </select>
                         <label for="student">Student</label>
                     </div>
                     <button class="btn btn-primary">Add</button>

@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Grade;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class GradeController extends Controller
 {
     public function index($slug)
     {
-        $grades = Grade::join('users', 'grades.teacher', '=', 'users.id')
+        $grades = DB::table('grades')
+            ->join('users', 'grades.teacher', '=', 'users.id')
             ->where('student', '=', $slug)
             ->get();
 
@@ -19,7 +19,9 @@ class GradeController extends Controller
 
     public function add()
     {
-        return view('add-grade');
+        $students = DB::table('users')->where('role', '=', 'student')
+            ->get();
+        return view('add-grade', compact('students'));
     }
 
     public function save(Request $request)
