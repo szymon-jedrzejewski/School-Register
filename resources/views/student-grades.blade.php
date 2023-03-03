@@ -6,7 +6,7 @@
             <th scope="col">Grade</th>
             <th scope="col">Subject</th>
             <th scope="col">Description</th>
-            <th scope="col">Student</th>
+            <th scope="col">Teacher</th>
         </tr>
         </thead>
         <tbody>
@@ -15,15 +15,7 @@
                 <td>  {{ $value->grade }} </td>
                 <td>  {{ $value->subject }} </td>
                 <td>  {{ $value->description }} </td>
-                <td>  {{ $value->student }} </td>
-                <td><a href="http://localhost:8080/register/public/grades/edit/{{ $value->id }}">
-                        <button class="btn btn-primary">Edit</button>
-                    </a>
-                </td>
-                <td><a href="http://localhost:8080/register/public/grades/delete/{{ $value->id }}">
-                        <button class="btn btn-primary">Delete</button>
-                    </a>
-                </td>
+                <td>  {{ $value->name }} </td>
             </tr>
         @endforeach
         </tbody>

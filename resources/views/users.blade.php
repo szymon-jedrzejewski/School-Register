@@ -14,12 +14,13 @@
                 <td>  {{ $user->name }} </td>
                 <td>  {{ $user->email }} </td>
                 <td>  {{ $user->role }} </td>
-                <td> <a href="http://localhost:8080/register/public/users/delete/{{ $user->id }}">
-                        <button class="btn btn-primary">Delete</button>
+                <td><a href="http://localhost:8080/register/public/users/edit/{{ $user->id }}">
+                        <button class="btn btn-primary">Edit</button>
                     </a>
                 </td>
-                <td> <a href="http://localhost:8080/register/public/users/edit/{{ $user->id }}">
-                        <button class="btn btn-primary">Edit</button>
+                <td>
+                    <a href="http://localhost:8080/register/public/users/delete/{{ $user->id }}">
+                        <button class="btn btn-primary">Delete</button>
                     </a>
                 </td>
             </tr>

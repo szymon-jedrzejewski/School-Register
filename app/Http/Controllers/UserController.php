@@ -19,11 +19,8 @@ class UserController extends Controller
 
     public function delete($slug)
     {
-        var_dump($slug);
-
         $user = User::find($slug);
-        var_dump($user);
-//        $user->delete();
+        $user->delete();
 
         return redirect('/users/list')->with('success', 'Stock updated.');
     }
@@ -33,19 +30,19 @@ class UserController extends Controller
         return view('add-user');
     }
 
-    public function save(Request $request)
+    public function save()
     {
-//        $request->validate([
-//            'name'=>'required',
-//            'email'=>'required|email|max:255|regex:/(.*)@school-register\.com/i',
-//            'password'=>'required|min:6|confirmed'
-//        ],
-//            [
-//            'required' => "This field is required!",
-//            'email' => "Mail has to be from school domain!",
-//            'regex' => "Mail has to be from school domain!",
-//            'password' => "Password must be longer than!"
-//        ]);
+        $this->validate(request(), [
+            'name' => 'required',
+            'email' => 'required|email|max:255|regex:/(.*)@school-register\.com/i',
+            'password' => 'required|min:6'
+        ],
+            [
+                'required' => "This field is required!",
+                'email' => "Mail has to be from school domain!",
+                'regex' => "Mail has to be from school domain!",
+                'password' => "Password must be longer than 6!"
+            ]);
 
         $password = request('password');
         $name = request('name');
@@ -77,16 +74,16 @@ class UserController extends Controller
     }
 
 
-    public function update(Request $request, $slug)
+    public function update($slug)
     {
-//        $request->validate([
-//            'email'=>'email|max:255|regex:/(.*)@school-register\.com/i|unique:users',
-//            'password'=>'min:6'
+//        $this->validate(request(), [
+//            'email' => 'email|max:255|regex:/(.*)@school-register\.com/i',
+//            'password' => 'min:6'
 //        ],
-//        [
-//            'email' => "Mail has to be from school domain!",
-//            'password' => "Password must be longer than!"
-//        ]);
+//            [
+//                'email' => "Mail has to be from school domain!",
+//                'password' => "Password must be longer than!"
+//            ]);
 
         $user = User::find($slug);
 

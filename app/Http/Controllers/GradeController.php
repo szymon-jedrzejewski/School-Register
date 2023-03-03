@@ -15,9 +15,43 @@ class GradeController extends Controller
             ->where('student', '=', $slug)
             ->get();
 
+        return view('student-grades', compact('grades'));
+    }
+
+    public function show()
+    {
+        $grades = DB::table('grades')
+            ->get();
+
         return view('grades', compact('grades'));
     }
 
+    public function details($slug)
+    {
+        $grade = Grade::find($slug);
+
+        return view('grade-details', compact('grade'));
+    }
+
+    public function update($slug)
+    {
+        $grade = Grade::find($slug);
+
+        $grade->grade = request('grade');
+        $grade->description = request('description');
+
+        $grade->save();
+
+        return redirect('/grades/list')->with('success', 'Stock updated.');
+    }
+
+    public function delete($slug)
+    {
+        $grade = Grade::find($slug);
+        $grade->delete();
+
+        return redirect('/grades/list')->with('success', 'Stock updated.');
+    }
     public function add()
     {
         $students = DB::table('users')->where('role', '=', 'student')
@@ -27,7 +61,6 @@ class GradeController extends Controller
 
     public function save()
     {
-
         $name = request('student');
 
         $id = DB::table('users')->where('name', '=', $name)->first()->id;
@@ -39,5 +72,7 @@ class GradeController extends Controller
         $grade->subject = request('subjects');
         $grade->student = $id;
         $grade->save();
+
+        return redirect('/grades/list')->with('success', 'Stock updated.');
     }
 }
