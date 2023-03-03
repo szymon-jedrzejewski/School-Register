@@ -6,8 +6,9 @@
                 <h3 class="text-center font-weight-light my-4">Add user</h3>
             </div>
             <div class="card-body">
-                <form action="/users" method="post">
+                <form action="/register/public/users/save" method="post">
                     @csrf
+                    @method('POST')
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" name="name" id="name">
                         <label for="name">Name</label>
@@ -22,14 +23,16 @@
                     </div>
                     <div class="form-floating mb-3">
                         <select class="dataTable-selector" name="roles" id="roles">
-                            <option value="admin">Admin</option>
-                            <option value="teacher">Teacher</option>
-                            <option value="student">Student</option>
+                            <option value="admin">admin</option>
+                            <option value="teacher">teacher</option>
+                            <option value="student">student</option>
                         </select>
                         <label for="roles">Choose a role:</label>
                     </div>
 
-                    <button class="btn btn-primary">Add</button>
+                    <a href="http://localhost:8080/register/public/users/save">
+                        <button class="btn btn-primary">Save</button>
+                    </a>
                 </form>
             </div>
         </div>
