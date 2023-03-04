@@ -12,9 +12,14 @@
 <body>
 
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-    <a class="navbar-brand">School register</a>
+    @if( auth()->check() )
+        <a class="navbar-brand">School register - {{auth()->user()->name}}</a>
+    @else
+        <a class="navbar-brand">School register</a>
+    @endif
 
     <div class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4" id="navbarSupportedContent">
+
         <ul class="dropdown-menu dropdown-menu-end show" aria-labelledby="navbarDropdown" data-bs-popper="none">
             @if( auth()->check() )
 
