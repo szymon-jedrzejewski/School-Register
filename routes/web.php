@@ -31,3 +31,7 @@ Route::put("/users/update/{slug}", 'App\Http\Controllers\UserController@update')
 Route::get("/users/add", 'App\Http\Controllers\UserController@add');
 Route::post("/users/save", 'App\Http\Controllers\UserController@save');
 Route::get("/users/delete/{slug}", 'App\Http\Controllers\UserController@delete');//it's done on purpose
+
+Route::get('/login', 'App\Http\Controllers\SessionsController@show')->name('login');
+Route::post('/login', 'App\Http\Controllers\SessionsController@login');
+Route::get('/logout', 'App\Http\Controllers\SessionsController@logout');

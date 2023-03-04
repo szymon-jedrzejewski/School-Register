@@ -10,8 +10,17 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
+        if (auth()->user()->role != 'admin') {
+            return redirect()->back();
+        }
+
         $users = User::all();
 
         return view('users', compact('users'));
@@ -19,6 +28,10 @@ class UserController extends Controller
 
     public function delete($slug)
     {
+        if (auth()->user()->role != 'admin') {
+            return redirect()->back();
+        }
+
         $user = User::find($slug);
         $user->delete();
 
@@ -27,11 +40,19 @@ class UserController extends Controller
 
     public function add()
     {
+        if (auth()->user()->role != 'admin') {
+            return redirect()->back();
+        }
+
         return view('add-user');
     }
 
     public function save()
     {
+        if (auth()->user()->role != 'admin') {
+            return redirect()->back();
+        }
+
         $this->validate(request(), [
             'name' => 'required',
             'email' => 'required|email|max:255|regex:/(.*)@school-register\.com/i',
@@ -68,6 +89,10 @@ class UserController extends Controller
 
     public function show($slug)
     {
+        if (auth()->user()->role != 'admin') {
+            return redirect()->back();
+        }
+
         $user = User::find($slug);
 
         return view('user-details', compact('user'));
@@ -76,6 +101,10 @@ class UserController extends Controller
 
     public function update($slug)
     {
+        if (auth()->user()->role != 'admin') {
+            return redirect()->back();
+        }
+
 //        $this->validate(request(), [
 //            'email' => 'email|max:255|regex:/(.*)@school-register\.com/i',
 //            'password' => 'min:6'

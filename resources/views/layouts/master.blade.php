@@ -12,12 +12,75 @@
 <body>
 
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" >School register</a>
+    <a class="navbar-brand">School register</a>
+
+    <div class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4" id="navbarSupportedContent">
+        <ul class="dropdown-menu dropdown-menu-end show" aria-labelledby="navbarDropdown" data-bs-popper="none">
+            @if( auth()->check() )
+
+                <input type="hidden" {{ $role = auth()->user()->role}}>
+
+                @if($role == 'admin')
+                    <li class="dropdown-item nav-item">
+                        <a class="nav-link" href="/register/public/users/list">Users</a>
+                    </li>
+                    <li class="dropdown-item nav-item">
+                        <a class="nav-link" href="/register/public/grades/list">Grades</a>
+                    </li>
+                    <li class="dropdown-item nav-item">
+                        <a class="nav-link" href="/register/public/users/add">Add user</a>
+                    </li>
+                    <li class="dropdown-item nav-item">
+                        <a class="nav-link" href="/register/public/grades/add">Add grade</a>
+                    </li>
+                    <li class="dropdown-item nav-item">
+                        <a class="nav-link" href="/register/public/logout">Logout</a>
+                    </li>
+                @endif
+
+                @if($role == 'teacher')
+                    <li class="dropdown-item nav-item">
+                        <a class="nav-link" href="/register/public/grades/list">Grades</a>
+                    </li>
+                    <li class="dropdown-item nav-item">
+                        <a class="nav-link" href="/register/public/grades/add">Add grade</a>
+                    </li>
+                    <li class="dropdown-item nav-item">
+                        <a class="nav-link" href="/register/public/logout">Logout</a>
+                    </li>
+                @endif
+
+                @if($role == 'student')
+                    <li class="dropdown-item nav-item">
+                        <a class="nav-link" href="/register/public/grades/list/{{ auth()->user()->id }}">My grades</a>
+                    </li>
+                    <li class="dropdown-item nav-item">
+                        <a class="nav-link" href="/register/public/logout">Logout</a>
+                    </li>
+                @endif
+            @else
+                <li class="dropdown-item nav-item">
+                    <a class="nav-link" href="/register/public/login">Login</a>
+                </li>
+            @endif
+
+            {{--            @if( auth()->check() )--}}
+            {{--                <li class="nav-item">--}}
+            {{--                    <a class="nav-link font-weight-bold" href="#">Hi {{ auth()->user()->name }}</a>--}}
+            {{--                </li>--}}
+            {{--                <li class="nav-item">--}}
+            {{--                    <a class="nav-link" href="/logout">Log Out</a>--}}
+            {{--                </li>--}}
+            {{--            @else--}}
+            {{--                <li class="nav-item">--}}
+            {{--                    <a class="nav-link" href="/login">Log In</a>--}}
+            {{--                </li>--}}
+            {{--                <li class="nav-item">--}}
+            {{--                    <a class="nav-link" href="/register">Register</a>--}}
+            {{--                </li>--}}
+            {{--            @endif--}}
+        </ul>
+    </div>
 </nav>
 
 <div class="container">
